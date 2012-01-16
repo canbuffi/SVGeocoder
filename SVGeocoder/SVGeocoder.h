@@ -32,6 +32,7 @@ typedef enum {
 + (SVGeocoder*)geocode:(NSString *)address region:(NSString *)region completion:(void (^)(NSArray *placemarks, NSError *error))block;
 
 + (SVGeocoder*)reverseGeocode:(CLLocationCoordinate2D)coordinate completion:(void (^)(NSArray *placemarks, NSError *error))block;
++ (SVGeocoder*)reverseGeocode:(CLLocationCoordinate2D)coordinate language:(NSString*)language region:(NSString *)region completion:(void (^)(NSArray *, NSError *))block;
 
 - (void)cancel;
 

@@ -105,6 +105,16 @@ typedef NSUInteger SVGeocoderRequestState;
     return [geocoder autorelease];
 }
 
++ (SVGeocoder *)reverseGeocode:(CLLocationCoordinate2D)coordinate language:(NSString *)language region:(NSString *)region completion:(void (^)(NSArray *, NSError *))block {
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys: 
+                                       [NSString stringWithFormat:@"%f,%f", coordinate.latitude, coordinate.longitude], @"latlng",
+                                       language, @"language",
+                                       region, @"region", nil];
+    SVGeocoder *geocoder = [[self alloc] initWithParameters:parameters completion:block];
+    [geocoder start];
+    return [geocoder autorelease];
+}
+
 #pragma mark - Public Initializers
 
 - (SVGeocoder*)initWithCoordinate:(CLLocationCoordinate2D)coordinate {
